@@ -1,5 +1,6 @@
 package com.romilson.workshopspringboot.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.romilson.workshopspringboot.domain.enums.StatePayment;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public abstract class Payment implements Serializable {
     @JoinColumn(name = "ordered_id")
     @MapsId
     @Getter @Setter
+    @JsonIgnore
     private Ordered ordered;
 
     public Payment(Integer id, StatePayment statePayment, Ordered ordered) {

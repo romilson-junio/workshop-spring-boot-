@@ -41,6 +41,9 @@ public class WorkshopspringbootApplication implements CommandLineRunner {
 	@Autowired
 	public PaymentRepository paymentRepository;
 
+	@Autowired
+	public OrderedItemRepository orderedItemRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(WorkshopspringbootApplication.class, args);
 	}
@@ -111,6 +114,22 @@ public class WorkshopspringbootApplication implements CommandLineRunner {
 
 		orderedRepository.saveAll(Arrays.asList(ordered1, ordered2));
 		paymentRepository.saveAll(Arrays.asList(payment1, payment2));
+
+		/**
+		 * Items Ordered and Items Products
+		 */
+		OrderedItem orderedItem1 = new OrderedItem(ordered1, p1, 0D, 1, 2000D);
+		OrderedItem orderedItem2 = new OrderedItem(ordered1, p3, 0D, 2, 80D);
+		OrderedItem orderedItem3 = new OrderedItem(ordered2, p2, 100D, 1, 800D);
+
+		ordered1.getItems().addAll(Arrays.asList(orderedItem1, orderedItem2));
+		ordered2.getItems().addAll(Arrays.asList(orderedItem3));
+
+		p1.getItems().addAll(Arrays.asList(orderedItem1));
+		p2.getItems().addAll(Arrays.asList(orderedItem3));
+		p3.getItems().addAll(Arrays.asList(orderedItem2));
+
+		orderedItemRepository.saveAll(Arrays.asList(orderedItem1, orderedItem2, orderedItem3));
 
 	}
 }

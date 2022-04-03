@@ -1,13 +1,14 @@
 package com.romilson.workshopspringboot.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor()
 @NoArgsConstructor
@@ -27,19 +28,34 @@ public class Product implements Serializable {
     @Getter @Setter
     private Double price;
 
-    @Getter
     @ManyToMany()
     @JoinTable(
             name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
-    @JsonBackReference
+
+    @JsonIgnore
+    @Getter
     private List<Category> categories = new ArrayList<>();
+
+    @Getter
+    @OneToMany(mappedBy = "id.product")
+    @JsonIgnore
+    private Set<OrderedItem> items = new HashSet<>();
 
     public Product(Integer id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
+    }
+
+    @JsonIgnore
+    public List<Ordered> getOrdereds(){
+        List<Ordered> list = new ArrayList<>();
+        for (OrderedItem x: items) {
+            list.add(x.getOrdered());
+        }
+        return list;
     }
 }

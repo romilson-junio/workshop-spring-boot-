@@ -1,6 +1,6 @@
 package com.romilson.workshopspringboot.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.romilson.workshopspringboot.domain.enums.TypeClient;
 import lombok.*;
 
@@ -34,7 +34,6 @@ public class Client implements Serializable {
 
     @Getter
     @OneToMany(mappedBy = "client")
-    @JsonManagedReference
     private List<Address> address = new ArrayList<>();
 
     @Getter
@@ -44,6 +43,7 @@ public class Client implements Serializable {
 
     @Getter
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Ordered> ordereds = new ArrayList<>();
 
     public Client(Integer id, String name, String email, String cpfCnpj, TypeClient typeClient) {

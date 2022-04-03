@@ -1,7 +1,5 @@
 package com.romilson.workshopspringboot.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,7 +24,6 @@ public class Category implements Serializable {
 
     @Getter
     @ManyToMany(mappedBy = "categories")
-    @JsonManagedReference
     private List<Product> products = new ArrayList<>();
 
     public Category(Integer id, String name) {

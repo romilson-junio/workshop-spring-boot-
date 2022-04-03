@@ -1,6 +1,5 @@
 package com.romilson.workshopspringboot.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +22,5 @@ public class City implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "state_id")
-    @JsonManagedReference
     private State state;
 }

@@ -1,6 +1,6 @@
 package com.romilson.workshopspringboot.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +28,7 @@ public class State implements Serializable {
 
     @Getter
     @OneToMany(mappedBy = "state")
-    @JsonBackReference
+    @JsonIgnore
     private List<City> cities = new ArrayList<>();
 
     public State(Integer id, String name, String acronym) {

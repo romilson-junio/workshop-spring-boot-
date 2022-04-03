@@ -4,9 +4,11 @@ import com.romilson.workshopspringboot.domain.enums.StatePayment;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Data
 @Entity
+@Table(name = "Pagamento_Cartão")
 public class CardPayment extends Payment{
 
     private static final long serialVersionUID = 1L;
