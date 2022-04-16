@@ -19,6 +19,7 @@ public class Category implements Serializable {
     @EqualsAndHashCode.Include()
     @Getter @Setter
     private Integer id;
+
     @Getter @Setter
     private String name;
 

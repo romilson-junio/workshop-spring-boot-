@@ -1,5 +1,6 @@
 package com.romilson.workshopspringboot.resources;
 
+import com.romilson.workshopspringboot.domain.Ordered;
 import com.romilson.workshopspringboot.services.OrderedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class OrderedResource {
     public OrderedService orderedService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getPedido(@PathVariable("id") Integer id){
+    public ResponseEntity<Ordered> find(@PathVariable("id") Integer id){
         return ResponseEntity.ok().body(orderedService.findById(id));
     }
 	

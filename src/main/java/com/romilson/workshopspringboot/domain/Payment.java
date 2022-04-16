@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @NoArgsConstructor
 @Entity
@@ -31,7 +32,7 @@ public abstract class Payment implements Serializable {
 
     public Payment(Integer id, StatePayment statePayment, Ordered ordered) {
         this.id = id;
-        this.statePayment = statePayment.getCode();
+        this.statePayment = (Objects.isNull(statePayment)) ? null : statePayment.getCode();
         this.ordered = ordered;
     }
 

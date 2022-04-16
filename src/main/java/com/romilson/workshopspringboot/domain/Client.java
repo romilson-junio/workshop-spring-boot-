@@ -6,10 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @NoArgsConstructor
 @Entity
@@ -25,6 +22,7 @@ public class Client implements Serializable {
     private Integer id;
     @Getter @Setter
     private String name;
+
     @Getter @Setter
     private String email;
     @Getter @Setter
@@ -33,7 +31,7 @@ public class Client implements Serializable {
     private Integer typeClient;
 
     @Getter
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Address> address = new ArrayList<>();
 
     @Getter
@@ -51,7 +49,7 @@ public class Client implements Serializable {
         this.name = name;
         this.email = email;
         this.cpfCnpj = cpfCnpj;
-        this.typeClient = typeClient.getCode();
+        this.typeClient = (Objects.isNull(typeClient)) ? null : typeClient.getCode();
     }
 
     public TypeClient getTypeClient() {

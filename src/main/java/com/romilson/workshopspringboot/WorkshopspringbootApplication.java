@@ -58,15 +58,27 @@ public class WorkshopspringbootApplication implements CommandLineRunner {
 		Product p2 = new Product(null, "Impressora", 800D);
 		Product p3 = new Product(null, "Mouse", 80D);
 
-		Category c1 = new Category(null, "Categoria 1", Arrays.asList(p1, p2, p3));
-		Category c2 = new Category(null, "Categoria 2", Arrays.asList(p2));
+		Category c1 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
+		Category c2 = new Category(null, "Utensilios", Arrays.asList(p2));
+		Category c3 = new Category(null, "Utensilios", Arrays.asList(p2));
+		Category c4 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
+		Category c5 = new Category(null, "Utensilios", Arrays.asList(p2));
+		Category c6 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
+		Category c7 = new Category(null, "Utensilios", Arrays.asList(p2));
+		Category c8 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
 
 		p1.getCategories().addAll(Arrays.asList(c1));
 		p2.getCategories().addAll(Arrays.asList(c1,c2));
 		p3.getCategories().addAll(Arrays.asList(c1));
 
-		categoryService.save(c1);
-		categoryService.save(c2);
+		categoryService.insert(c1);
+		categoryService.insert(c2);
+		categoryService.insert(c3);
+		categoryService.insert(c4);
+		categoryService.insert(c5);
+		categoryService.insert(c6);
+		categoryService.insert(c7);
+		categoryService.insert(c8);
 		productRepository.saveAll(Arrays.asList(p1, p2, p3));
 
 		/*
