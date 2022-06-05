@@ -57,19 +57,34 @@ public class WorkshopspringbootApplication implements CommandLineRunner {
 		Product p1 = new Product(null, "Computador", 2000D);
 		Product p2 = new Product(null, "Impressora", 800D);
 		Product p3 = new Product(null, "Mouse", 80D);
+		Product p4 = new Product(null, "Mesa de Escritório", 300D);
+		Product p5 = new Product(null, "Toalha", 500D);
+		Product p6 = new Product(null, "Colcha", 200D);
+		Product p7 = new Product(null, "TV true color", 1200D);
+		Product p8 = new Product(null, "Roçadeira", 800D);
+		Product p9 = new Product(null, "Abajour", 100D);
+		Product p10 = new Product(null, "Pendente", 180D);
+		Product p11 = new Product(null, "Shampoo", 90D);
 
 		Category c1 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
-		Category c2 = new Category(null, "Utensilios", Arrays.asList(p2));
-		Category c3 = new Category(null, "Utensilios", Arrays.asList(p2));
-		Category c4 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
-		Category c5 = new Category(null, "Utensilios", Arrays.asList(p2));
-		Category c6 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
-		Category c7 = new Category(null, "Utensilios", Arrays.asList(p2));
-		Category c8 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3));
+		Category c2 = new Category(null, "Utensilios", Arrays.asList(p2, p4));
+		Category c3 = new Category(null, "Utensilios", Arrays.asList(p5, p6));
+		Category c4 = new Category(null, "Tecnologia", Arrays.asList(p1, p2, p3, p7));
+		Category c5 = new Category(null, "Utensilios", Arrays.asList(p8));
+		Category c6 = new Category(null, "Tecnologia", Arrays.asList(p9, p10));
+		Category c7 = new Category(null, "Utensilios", Arrays.asList(p11));
 
-		p1.getCategories().addAll(Arrays.asList(c1));
-		p2.getCategories().addAll(Arrays.asList(c1,c2));
-		p3.getCategories().addAll(Arrays.asList(c1));
+		p1.getCategories().addAll(Arrays.asList(c1, c5));
+		p2.getCategories().addAll(Arrays.asList(c1,c2, c4));
+		p3.getCategories().addAll(Arrays.asList(c1, c4));
+		p4.getCategories().addAll(Arrays.asList(c2));
+		p5.getCategories().addAll(Arrays.asList(c3));
+		p6.getCategories().addAll(Arrays.asList(c3));
+		p7.getCategories().addAll(Arrays.asList(c4));
+		p8.getCategories().addAll(Arrays.asList(c5));
+		p9.getCategories().addAll(Arrays.asList(c6));
+		p10.getCategories().addAll(Arrays.asList(c6));
+		p11.getCategories().addAll(Arrays.asList(c7));
 
 		categoryService.insert(c1);
 		categoryService.insert(c2);
@@ -78,8 +93,7 @@ public class WorkshopspringbootApplication implements CommandLineRunner {
 		categoryService.insert(c5);
 		categoryService.insert(c6);
 		categoryService.insert(c7);
-		categoryService.insert(c8);
-		productRepository.saveAll(Arrays.asList(p1, p2, p3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7,p8, p9, p10, p11));
 
 		/*
 		 * State and City

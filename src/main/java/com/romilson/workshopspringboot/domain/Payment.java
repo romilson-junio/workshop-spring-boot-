@@ -1,6 +1,7 @@
 package com.romilson.workshopspringboot.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.romilson.workshopspringboot.domain.enums.StatePayment;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Pagamento")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Payment implements Serializable {
 
     private static final long serialVersionUID = 1L;

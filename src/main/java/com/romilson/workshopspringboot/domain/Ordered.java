@@ -50,4 +50,12 @@ public class Ordered implements Serializable {
         this.client = client;
         this.deliveryAddress = deliveryAddress;
     }
+    
+    public Double getTotalValue(){
+        double soma = 0D;
+        for (OrderedItem item: items ) {
+            soma += item.getSubTotal();
+        }
+        return soma;
+    }
 }

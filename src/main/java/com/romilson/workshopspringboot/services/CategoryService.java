@@ -19,7 +19,7 @@ import java.util.Optional;
 public class CategoryService {
 
     @Autowired
-    public CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     public Category findById(Integer id){
         Optional<Category> category = categoryRepository.findById(id);

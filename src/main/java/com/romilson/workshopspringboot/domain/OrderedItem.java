@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -36,12 +35,25 @@ public class OrderedItem implements Serializable {
         this.quantity = quantity;
         this.price = price;
     }
+
+    public void setOrdered(Ordered ordered){
+        id.setOrdered(ordered);
+    }
+
     @JsonIgnore
     public Ordered getOrdered(){
         return id.getOrdered();
     }
 
+    public void setProduct(Product product){
+        id.setProduct(product);
+    }
+
     public Product getProduct(){
         return id.getProduct();
+    }
+
+    public Double getSubTotal(){
+        return (price - discount) * quantity;
     }
 }
